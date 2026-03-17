@@ -1,10 +1,27 @@
 body {
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     text-align: center;
     padding: 20px;
+    background: linear-gradient(to bottom, #edf4ff, #f4e8ff);
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 48px;
+    margin-top: 20px;
+}
+
+p {
+    font-size: 18px;
 }
 
 button {
-    padding: 10px 20px;
-    margin-top: 10px;
+    padding: 12px 24px;
+    margin: 10px;
+    border: none;
+    border-radius: 20px;
+    background: #4da3ff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
 }
