@@ -1,17 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Library</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library - CalmNow</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="screen-page">
+    <div class="app-shell">
+        <header class="page-header">
+            <button class="back-btn" onclick="window.location.href='index.html'">←</button>
+            <h2>Library</h2>
+            <div class="placeholder"></div>
+        </header>
 
-    <h1>Library</h1>
+        <main class="content">
+            <section class="panel">
+                <h3 class="section-title">Breathing Exercises</h3>
 
-    <h3>Breathing Exercises</h3>
-    <p>Box Breathing</p>
-    <p>4-7-8 Breathing</p>
-    <p>Belly Breathing</p>
+                <div class="exercise-card">
+                    <div>
+                        <h4>Box Breathing</h4>
+                        <p>Steady four-part breathing for calm and focus.</p>
+                    </div>
+                    <span class="tag">4 min</span>
+                </div>
 
+                <div class="exercise-card">
+                    <div>
+                        <h4>4-7-8 Breathing</h4>
+                        <p>A calming breathing pattern to reduce stress quickly.</p>
+                    </div>
+                    <span class="tag">3 min</span>
+                </div>
+
+                <div class="exercise-card">
+                    <div>
+                        <h4>Belly Breathing</h4>
+                        <p>Deep diaphragmatic breathing to relax the body.</p>
+                    </div>
+                    <span class="tag">5 min</span>
+                </div>
+            </section>
+        </main>
+
+        <nav class="bottom-nav">
+            <button class="nav-btn" onclick="window.location.href='index.html'">🏠<span>Home</span></button>
+            <button class="nav-btn active" onclick="window.location.href='library.html'">📚<span>Library</span></button>
+            <button class="nav-btn" onclick="window.location.href='emergency.html'">🚨<span>Emergency</span></button>
+        </nav>
+    </div>
 </body>
 </html>

@@ -1,22 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Emergency</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency - CalmNow</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="screen-page">
+    <div class="app-shell">
+        <header class="page-header">
+            <button class="back-btn" onclick="window.location.href='index.html'">←</button>
+            <h2>Emergency</h2>
+            <div class="placeholder"></div>
+        </header>
 
-    <h1>Emergency</h1>
+        <main class="content">
+            <section class="panel emergency-panel">
+                <h3>You are not alone</h3>
+                <p class="emergency-text">
+                    If you're in immediate danger or need urgent support, contact emergency services or a crisis line.
+                </p>
 
-    <p>If you're in immediate danger, call emergency services.</p>
+                <div class="emergency-card urgent">
+                    <h4>Call Emergency Services</h4>
+                    <p>Use your local emergency number if you are in immediate danger.</p>
+                </div>
 
-    <h3>Support</h3>
-    <p>988 Suicide Hotline</p>
+                <div class="emergency-card">
+                    <h4>988 Suicide & Crisis Lifeline</h4>
+                    <p>Call or text 988 for immediate support.</p>
+                </div>
 
-    <br><br>
+                <div class="emergency-card">
+                    <h4>Trusted Contact</h4>
+                    <p>Reach out to a friend, family member, or support person.</p>
+                </div>
+            </section>
+        </main>
 
-    <!-- BACK BUTTON -->
-    <button onclick="location.href='index.html'">Back Home</button>
-
+        <nav class="bottom-nav">
+            <button class="nav-btn" onclick="window.location.href='index.html'">🏠<span>Home</span></button>
+            <button class="nav-btn" onclick="window.location.href='library.html'">📚<span>Library</span></button>
+            <button class="nav-btn active" onclick="window.location.href='emergency.html'">🚨<span>Emergency</span></button>
+        </nav>
+    </div>
 </body>
 </html>

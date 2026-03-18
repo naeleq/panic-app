@@ -1,19 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CalmNow</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalmNow</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <h2>Good to see you, Friend</h2>
-  <p>You choose to focus on Relaxation</p>
+<body class="home-page">
+    <div class="app-shell">
+        <header class="top-bar">
+            <div class="icon-circle">☰</div>
+            <div class="icon-circle">👤</div>
+        </header>
 
-  <h1>Serenity</h1>
-  <p>4 MIN</p>
+        <main class="content">
+            <section class="hero-card">
+                <p class="greeting">Good to see you, Friend</p>
+                <p class="subtext">You choose to focus on Relaxation</p>
 
-  <p><a href="breathing.html">Start</a></p>
-  <p><a href="library.html">Library</a></p>
-  <p><a href="emergency.html">Emergency</a></p>
+                <div class="hero-image-card">
+                    <div class="hero-image-text">
+                        <h1>Serenity</h1>
+                        <p class="duration">4 MIN</p>
+                    </div>
+                </div>
+
+                <button class="primary-btn" onclick="window.location.href='breathing.html'">
+                    Start
+                </button>
+            </section>
+        </main>
+
+        <nav class="bottom-nav">
+            <button class="nav-btn active" onclick="window.location.href='index.html'">🏠<span>Home</span></button>
+            <button class="nav-btn" onclick="window.location.href='library.html'">📚<span>Library</span></button>
+            <button class="nav-btn" onclick="window.location.href='emergency.html'">🚨<span>Emergency</span></button>
+        </nav>
+    </div>
 </body>
 </html>
