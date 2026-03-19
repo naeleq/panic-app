@@ -6,50 +6,112 @@
     <title>Emergency - CalmNow</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="screen-page">
-    <div class="app-shell">
-        <header class="page-header">
-            <button class="back-btn" onclick="window.location.href='index.html'">←</button>
-            <h2>Emergency</h2>
-            <div class="placeholder"></div>
-        </header>
+<body>
 
-        <main class="content">
-            <div class="alert-box">
-                If you're in immediate danger, call emergency services now.
+<div class="app-shell">
+    <header class="page-header">
+        <button class="back-btn" onclick="window.location.href='index.html'">←</button>
+        <h2>Emergency</h2>
+        <div class="placeholder"></div>
+    </header>
+
+    <div class="danger-box">
+        <div class="danger-icon">!</div>
+        <div class="danger-text">
+            <strong>If you're in immediate danger:</strong>
+            <p>Call 911 or go to your nearest emergency room. These resources are here to help you.</p>
+        </div>
+    </div>
+
+    <div class="remember-card">
+        <h3>Remember:</h3>
+        <ul>
+            <li>You are not alone in this</li>
+            <li>It's okay to ask for help</li>
+            <li>This feeling is temporary</li>
+            <li>You deserve support and care</li>
+        </ul>
+    </div>
+
+    <section class="emergency-section">
+        <h3 class="section-title emergency-heading">Crisis Support</h3>
+
+        <div class="support-card">
+            <div class="support-left">
+                <div class="support-title-row">
+                    <span class="support-icon blue">📞</span>
+                    <h4>988 Suicide &amp; Crisis Lifeline</h4>
+                </div>
+                <p>24/7 support for people in crisis</p>
+                <a class="support-number" href="tel:988">988</a>
+            </div>
+            <a class="support-action-btn" href="tel:988">Call</a>
+        </div>
+
+        <div class="support-card">
+            <div class="support-left">
+                <div class="support-title-row">
+                    <span class="support-icon green">💬</span>
+                    <h4>Crisis Text Line</h4>
+                </div>
+                <p>Text HOME to connect with a counselor</p>
+                <a class="support-number" href="sms:741741?body=HOME">741741</a>
+            </div>
+            <a class="support-action-btn" href="sms:741741?body=HOME">Text</a>
+        </div>
+
+        <div class="support-card">
+            <div class="support-left">
+                <div class="support-title-row">
+                    <span class="support-icon blue">📞</span>
+                    <h4>SAMHSA National Helpline</h4>
+                </div>
+                <p>Mental health and substance abuse help</p>
+                <a class="support-number" href="tel:18006624357">1–800–662–4357</a>
+            </div>
+            <a class="support-action-btn" href="tel:18006624357">Call</a>
+        </div>
+
+        <div class="support-card">
+            <div class="support-left">
+                <div class="support-title-row">
+                    <span class="support-icon blue">📞</span>
+                    <h4>911 Emergency Services</h4>
+                </div>
+                <p>For immediate life-threatening emergencies</p>
+                <a class="support-number" href="tel:911">911</a>
+            </div>
+            <a class="support-action-btn" href="tel:911">Call</a>
+        </div>
+    </section>
+
+    <section class="emergency-section">
+        <h3 class="section-title emergency-heading">Personal Support</h3>
+
+        <div class="personal-support-card">
+            <div class="support-title-row">
+                <span class="support-icon purple">👥</span>
+                <h4>Reach out to someone you trust</h4>
             </div>
 
-            <section class="panel emergency-panel">
-                <div class="emergency-card">
-                    <h4>Reassurance</h4>
-                    <ul>
-                        <li>You will feel okay again.</li>
-                        <li>This feeling is temporary.</li>
-                        <li>You are safe right now.</li>
-                        <li>Breathe slowly and seek calm.</li>
-                    </ul>
-                </div>
+            <p class="personal-support-text">
+                Sometimes talking to a friend, family member, or therapist can help.
+            </p>
 
-                <div class="emergency-card">
-                    <h4>Crisis Support</h4>
-                    <p><strong>988 Suicide & Crisis Lifeline</strong></p>
-                    <p>Call or text 988 for immediate support.</p>
-                </div>
+            <div class="consider-text">Consider contacting:</div>
+            <ul class="personal-list">
+                <li>A trusted friend or family member</li>
+                <li>Your therapist or counselor</li>
+                <li>Your doctor</li>
+                <li>A support group member</li>
+            </ul>
+        </div>
+    </section>
 
-                <div class="emergency-card">
-                    <h4>Personal Support</h4>
-                    <p>Reach out to a trusted friend, family member, or support contact.</p>
-                </div>
+    <button class="primary-btn emergency-breathing-btn" onclick="window.location.href='breathing.html'">
+        Try a Breathing Exercise
+    </button>
+</div>
 
-                <button class="primary-btn" onclick="window.location.href='index.html'">I'm feeling better</button>
-            </section>
-        </main>
-
-        <nav class="bottom-nav">
-            <button class="nav-btn" onclick="window.location.href='index.html'">🏠<span>Home</span></button>
-            <button class="nav-btn" onclick="window.location.href='library.html'">📚<span>Library</span></button>
-            <button class="nav-btn active" onclick="window.location.href='emergency.html'">🚨<span>Emergency</span></button>
-        </nav>
-    </div>
 </body>
 </html>

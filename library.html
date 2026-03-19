@@ -3,59 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library - CalmNow</title>
+    <title>Library</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="screen-page">
-    <div class="app-shell">
-        <header class="page-header">
-            <button class="back-btn" onclick="window.location.href='index.html'">←</button>
-            <h2>Library</h2>
-            <div class="placeholder"></div>
-        </header>
+<body>
 
-        <main class="content">
-            <div class="tabs">
-                <button class="tab active">Breathing</button>
-                <button class="tab">Grounding</button>
-                <button class="tab">Calm</button>
-                <button class="tab">Learn</button>
+<div class="app-shell">
+
+    <header class="page-header">
+        <button class="back-btn" onclick="window.location.href='index.html'">←</button>
+        <h2>Library</h2>
+        <div class="placeholder"></div>
+    </header>
+
+    <div class="tabs">
+        <button class="tab active" onclick="showTab('breathing', this)">Breathing</button>
+        <button class="tab" onclick="showTab('grounding', this)">Grounding</button>
+        <button class="tab" onclick="showTab('calm', this)">Calm</button>
+        <button class="tab" onclick="showTab('learn', this)">Learn</button>
+    </div>
+
+    <main class="content">
+
+        <div id="breathing" class="tab-content active">
+            <h3 class="section-title">Breathing Exercises</h3>
+
+            <div class="exercise-card">
+                <div class="exercise-content">
+                    <h4>Box Breathing</h4>
+                    <p>Controlled breathing calms your nervous system.</p>
+                </div>
+                <span class="tag">4 min</span>
             </div>
 
-            <section class="panel">
-                <h3 class="section-title">Breathing Exercises</h3>
-
-                <div class="exercise-card">
-                    <div class="exercise-content">
-                        <h4>Box Breathing</h4>
-                        <p>Controlled breathing calms your nervous system.</p>
-                    </div>
-                    <span class="tag">4 min</span>
+            <div class="exercise-card">
+                <div class="exercise-content">
+                    <h4>4-7-8 Breathing</h4>
+                    <p>A relaxing pattern to reduce stress quickly.</p>
                 </div>
+                <span class="tag">3 min</span>
+            </div>
 
-                <div class="exercise-card">
-                    <div class="exercise-content">
-                        <h4>4-7-8 Breathing</h4>
-                        <p>A relaxing pattern to reduce stress quickly.</p>
-                    </div>
-                    <span class="tag">3 min</span>
+            <div class="exercise-card">
+                <div class="exercise-content">
+                    <h4>Belly Breathing</h4>
+                    <p>Deep diaphragmatic breathing for calm.</p>
                 </div>
+                <span class="tag">5 min</span>
+            </div>
+        </div>
 
-                <div class="exercise-card">
-                    <div class="exercise-content">
-                        <h4>Belly Breathing</h4>
-                        <p>Deep diaphragmatic breathing for calm.</p>
-                    </div>
-                    <span class="tag">5 min</span>
+        <div id="grounding" class="tab-content">
+            <h3 class="section-title">Grounding Techniques</h3>
+            <p class="subtext">Anchor yourself in the present moment</p>
+
+            <div class="exercise-card">
+                <div class="exercise-content">
+                    <h4>⚓ 5-4-3-2-1 Method</h4>
+                    <p>Engage all five senses</p>
                 </div>
-            </section>
-        </main>
+            </div>
 
-        <nav class="bottom-nav">
-            <button class="nav-btn" onclick="window.location.href='index.html'">🏠<span>Home</span></button>
-            <button class="nav-btn active" onclick="window.location.href='library.html'">📚<span>Library</span></button>
-            <button class="nav-btn" onclick="window.location.href='emergency.html'">🚨<span>Emergency</span></button>
-        </nav>
-    </div>
+            <div class="exercise-card">
+                <div class="exercise-content">
+                    <h4>⚓ Body Scan</h4>
+                    <p>Progressive relaxation</p>
+                </div>
+            </div>
+
+            <div class="exercise-card">
+                <div class="exercise-content">
+                    <h4>⚓ Object Focus</h4>
+                    <p>Detailed observation technique</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="calm" class="tab-content">
+            <h3 class="section-title">Affirmations &amp; Music</h3>
+            <p class="subtext">Soothing words and sounds for peace</p>
+
+            <div class="exercise-card">
+                <div class="exercise-content">
+                    <h4>💜 Present Moment</h4>
+                    <p>I am here and I am safe</p>
+                </div>
+            </div>
+
+            <div class="exercise-card">
+                <div class="exercise-content">
+                    <h4>💜 Self-Compassion</h4>
+                    <p>Be kind to yourself</p>
+                </div>
+            </div>
+
+            <div class="exercise-card calm-highlight">
+                <div class="exercise-content">
+                    <h4>🎵 Calming Music</h4>
+                    <p>Search for meditation or nature sounds</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="learn" class="tab-content">
+            <h3 class="section-title">Understanding Anxiety</h3>
+            <p class="subtext">Knowledge is power – learn about what you're experiencing</p>
+
+            <div class="exercise-card">
+                <div class="exercise-content">
+                    <h4>📄 Understanding Panic Attacks</h4>
+                    <p>What happens in your body</p>
+                </div>
+            </div>
+
+            <div class="exercise-card">
+                <div class="exercise-content">
+                    <h4>📄 Common Triggers</h4>
+                    <p>Know what to watch for</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script>
+function showTab(tabId, btn) {
+    document.querySelectorAll(".tab-content").forEach(section => {
+        section.classList.remove("active");
+    });
+
+    document.querySelectorAll(".tab").forEach(tab => {
+        tab.classList.remove("active");
+    });
+
+    document.getElementById(tabId).classList.add("active");
+    btn.classList.add("active");
+}
+</script>
+
 </body>
 </html>

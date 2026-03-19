@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Breathing - CalmNow</title>
+
+    <script>
+        const currentUser = localStorage.getItem("calmNowCurrentUser");
+        if (!currentUser) {
+            window.location.href = "auth.html";
+        }
+    </script>
+
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="screen-page">
+<body class="breathing-page">
     <div class="app-shell">
         <header class="page-header">
             <button class="back-btn" onclick="window.location.href='index.html'">←</button>
@@ -14,18 +22,18 @@
             <div class="placeholder"></div>
         </header>
 
-        <main class="content center-content">
-            <section class="panel breathing-panel">
+        <main class="content">
+            <section class="breathing-layout">
                 <div class="breathing-outer-ring">
                     <div class="breathing-circle" id="breathingCircle">
                         <span id="breathingText">Start</span>
                     </div>
                 </div>
 
-                <h1 class="breathing-count" id="phaseTitle">Ready to begin</h1>
-                <p class="instruction" id="phaseInstruction">Press Start to begin the breathing exercise.</p>
+                <h1 class="breathing-count" id="phaseTitle">Slowly breathe in through your nose</h1>
+                <p class="instruction" id="phaseInstruction">Follow the circle as it expands and contracts</p>
 
-                <div class="button-row">
+                <div class="button-row breathing-button-row">
                     <button class="primary-btn half-btn" id="startBtn">Start</button>
                     <button class="secondary-btn half-btn" id="resetBtn">Reset</button>
                 </div>
@@ -33,9 +41,15 @@
         </main>
 
         <nav class="bottom-nav">
-            <button class="nav-btn" onclick="window.location.href='index.html'">🏠<span>Home</span></button>
-            <button class="nav-btn" onclick="window.location.href='library.html'">📚<span>Library</span></button>
-            <button class="nav-btn" onclick="window.location.href='emergency.html'">🚨<span>Emergency</span></button>
+            <button class="nav-btn active" onclick="window.location.href='index.html'">
+                <span>Home</span>
+            </button>
+            <button class="nav-btn" onclick="window.location.href='library.html'">
+                <span>Library</span>
+            </button>
+            <button class="nav-btn" onclick="window.location.href='emergency.html'">
+                <span>Emergency</span>
+            </button>
         </nav>
     </div>
 

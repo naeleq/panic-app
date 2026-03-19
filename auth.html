@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth - CalmNow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+
+<div class="auth-shell">
+    <img src="logo.png" alt="CalmNow Logo" class="auth-logo-img">
+
+    <div class="auth-card">
+        <div class="auth-toggle">
+            <button id="loginTab" class="toggle active" type="button" onclick="showLogin()">Log In</button>
+            <button id="signupTab" class="toggle" type="button" onclick="showSignup()">Sign Up</button>
+        </div>
+
+        <p id="authMessage" class="auth-message"></p>
+
+        <!-- LOGIN FORM -->
+        <form id="loginForm" class="form active" onsubmit="login(event)">
+            <label for="loginEmail">Email</label>
+            <input id="loginEmail" type="email" placeholder="you@example.com" required>
+
+            <label for="loginPassword">Password</label>
+            <input id="loginPassword" type="password" placeholder="••••••••" required>
+
+            <div class="form-row">
+                <label><input type="checkbox" id="rememberMe"> Remember me</label>
+                <span class="link">Forgot password?</span>
+            </div>
+
+            <button type="submit" class="primary-btn">Log In</button>
+        </form>
+
+        <!-- SIGNUP FORM -->
+        <form id="signupForm" class="form" onsubmit="signup(event)">
+            <label for="signupName">Name</label>
+            <input id="signupName" type="text" placeholder="Your name" required>
+
+            <label for="signupEmail">Email</label>
+            <input id="signupEmail" type="email" placeholder="you@example.com" required>
+
+            <label for="signupPassword">Password</label>
+            <input id="signupPassword" type="password" placeholder="••••••••" required minlength="6">
+
+            <p class="terms">
+                By signing up, you agree to our Terms of Service and Privacy Policy
+            </p>
+
+            <button type="submit" class="primary-btn">Create Account</button>
+        </form>
+    </div>
+
+    <p class="auth-footer">Your mental health journey starts here</p>
+</div>
+
+<script>
+function showLogin() {
+    document.getElementById("loginForm").classList.add("active");
+    document.getElementById("signupForm").classList.remove("active");
+    document.getElementById("loginTab").classList.add("active");
+    document.getElementById("signupTab").classList.remove("active");
+    clearMessage();
+}
+
+function showSignup() {
+    document.getElementById("signupForm").classList.add("active");
+    document.getElementById("loginForm").classList.remove("active");
+    document.getElementById("signupTab").classList.add("active");
+    document.getElementById("loginTab").classList.remove("active");
+    clearMessage();
+}
+
+function getUsers() {
+    const users = localStorage.getItem("calmNowUsers");
+    return users ? JSON.parse(users) : [];
+}
+
+function saveUsers(users) {
+    localStorage.setItem("calmNowUsers", JSON.stringify(users));
+}
+
+function setMessage(text, type = "error") {
+    const message = document.getElementById("authMessage");
+    message.textContent = text;
+    message.className = `auth-message ${type}`;
+}
+
+function clearMessage() {
+    const message = document.getElementById("authMessage");
+    message.textContent = "";
+    message.className = "auth-message";
+}
+
+function signup(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("signupName").value.trim();
+    const email = document.getElementById("signupEmail").value.trim().toLowerCase();
+    const password = document.getElementById("signupPassword").value;
+
+    const users = getUsers();
+    const existingUser = users.find(user => user.email === email);
+
+    if (existingUser) {
+        setMessage("An account with that email already exists.");
+        return;
+    }
+
+    const newUser = {
+        id: Date.now(),
+        name,
+        email,
+        password
+    };
+
+    users.push(newUser);
+    saveUsers(users);
+
+    localStorage.setItem("calmNowCurrentUser", JSON.stringify({
+        id: newUser.id,
+        name: newUser.name,
+        email: newUser.email
+    }));
+
+    sessionStorage.setItem("seenSplash", "true");
+    setMessage("Account created successfully.", "success");
+
+    setTimeout(() => {
+        localStorage.setItem("calmNowOnboardingComplete", "false");
+        window.location.href = "onboarding.html";
+    }, 800);
+}
+
+function login(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("loginEmail").value.trim().toLowerCase();
+    const password = document.getElementById("loginPassword").value;
+    const rememberMe = document.getElementById("rememberMe").checked;
+
+    const users = getUsers();
+    const user = users.find(user => user.email === email && user.password === password);
+
+    if (!user) {
+        setMessage("Invalid email or password.");
+        return;
+    }
+
+    const safeUser = {
+        id: user.id,
+        name: user.name,
+        email: user.email
+    };
+
+    localStorage.setItem("calmNowCurrentUser", JSON.stringify(safeUser));
+    sessionStorage.setItem("seenSplash", "true");
+
+    if (rememberMe) {
+        localStorage.setItem("calmNowRememberedUser", JSON.stringify(safeUser));
+    } else {
+        localStorage.removeItem("calmNowRememberedUser");
+    }
+
+    setMessage("Login successful.", "success");
+
+    setTimeout(() => {
+        const onboardingComplete = localStorage.getItem("calmNowOnboardingComplete");
+
+        if (onboardingComplete === "true") {
+            window.location.href = "index.html";
+        } else {
+            window.location.href = "onboarding.html";
+        }
+    }, 800);
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    const rememberedUser = localStorage.getItem("calmNowRememberedUser");
+
+    if (rememberedUser) {
+        const parsedUser = JSON.parse(rememberedUser);
+        document.getElementById("loginEmail").value = parsedUser.email || "";
+        document.getElementById("rememberMe").checked = true;
+    }
+});
+</script>
+
+</body>
+</html>

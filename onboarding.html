@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding - CalmNow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="onboarding-page">
+
+<div class="onboarding-shell">
+    <div class="onboarding-card">
+        <h1 class="onboarding-title">Hello, Friend</h1>
+        <p class="onboarding-subtitle">What can I help you with today?</p>
+        <p class="onboarding-helper">Select all that apply</p>
+
+        <div class="onboarding-options">
+            <button class="onboarding-option" onclick="toggleOption(this, 'Panic Attacks')">
+                <div class="option-icon option-orange">⚡</div>
+                <span>Panic Attacks</span>
+            </button>
+
+            <button class="onboarding-option" onclick="toggleOption(this, 'General Anxiety')">
+                <div class="option-icon option-yellow">🧠</div>
+                <span>General Anxiety</span>
+            </button>
+
+            <button class="onboarding-option" onclick="toggleOption(this, 'Stress & Overwhelm')">
+                <div class="option-icon option-blue">〰</div>
+                <span>Stress &amp; Overwhelm</span>
+            </button>
+
+            <button class="onboarding-option" onclick="toggleOption(this, 'Sleep Issues')">
+                <div class="option-icon option-purple">☾</div>
+                <span>Sleep Issues</span>
+            </button>
+
+            <button class="onboarding-option" onclick="toggleOption(this, 'Social Anxiety')">
+                <div class="option-icon option-green">👥</div>
+                <span>Social Anxiety</span>
+            </button>
+
+            <button class="onboarding-option" onclick="toggleOption(this, 'Other Concerns')">
+                <div class="option-icon option-pink">♡</div>
+                <span>Other Concerns</span>
+            </button>
+        </div>
+
+        <button class="primary-btn onboarding-continue-btn" onclick="saveOnboarding()">Continue</button>
+    </div>
+</div>
+
+<script>
+    const selectedConcerns = [];
+
+    function toggleOption(button, value) {
+        button.classList.toggle("selected");
+
+        const index = selectedConcerns.indexOf(value);
+        if (index > -1) {
+            selectedConcerns.splice(index, 1);
+        } else {
+            selectedConcerns.push(value);
+        }
+    }
+
+    function saveOnboarding() {
+        if (selectedConcerns.length === 0) {
+            alert("Please select at least one option.");
+            return;
+        }
+
+        localStorage.setItem("calmNowConcerns", JSON.stringify(selectedConcerns));
+        localStorage.setItem("calmNowOnboardingComplete", "true");
+        window.location.href = "index.html";
+    }
+</script>
+
+</body>
+</html>

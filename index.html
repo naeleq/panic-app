@@ -4,20 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CalmNow</title>
+
+    <script>
+        const currentUser = localStorage.getItem("calmNowCurrentUser");
+
+        if (!currentUser) {
+            if (!sessionStorage.getItem("seenSplash")) {
+                window.location.href = "splash.html";
+            } else {
+                window.location.href = "auth.html";
+            }
+        }
+    </script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="home-page">
     <div class="app-shell">
         <header class="top-bar">
             <div class="icon-circle">☰</div>
-            <div class="icon-circle">👤</div>
+            <button class="icon-circle" onclick="logout()">⎋</button>
         </header>
 
         <main class="content">
             <section class="hero-card">
-                <p class="greeting">Good to see you, Friend</p>
-                <p class="subtext">You choose to focus on Relaxation</p>
-
+                <p class="greeting" id="greetingText">Good to see you, Friend</p>
+                <p class="subtext" id="focusText">You choose to focus on Relaxation</p>
                 <div class="hero-image-card">
                     <div class="hero-image-text">
                         <p class="small-label">RELAX</p>
@@ -31,10 +43,42 @@
         </main>
 
         <nav class="bottom-nav">
-            <button class="nav-btn active" onclick="window.location.href='index.html'">🏠<span>Home</span></button>
-            <button class="nav-btn" onclick="window.location.href='library.html'">📚<span>Library</span></button>
-            <button class="nav-btn" onclick="window.location.href='emergency.html'">🚨<span>Emergency</span></button>
+            <button class="nav-btn active" onclick="window.location.href='index.html'"><span>Home</span></button>
+            <button class="nav-btn" onclick="window.location.href='library.html'"><span>Library</span></button>
+            <button class="nav-btn" onclick="window.location.href='emergency.html'"><span>Emergency</span></button>
         </nav>
     </div>
+
+    <script>
+        const storedUser = localStorage.getItem("calmNowCurrentUser");
+        const storedConcerns = localStorage.getItem("calmNowConcerns");
+
+        if (storedUser) {
+            const user = JSON.parse(storedUser);
+            const greetingText = document.getElementById("greetingText");
+
+            if (greetingText && user.name) {
+                greetingText.innerHTML = `Good to see you,<br>${user.name}`;
+            }
+        }
+
+        if (storedConcerns) {
+            const concerns = JSON.parse(storedConcerns);
+            const focusText = document.getElementById("focusText");
+
+            if (focusText && concerns.length > 0) {
+                focusText.textContent = `You choose to focus on ${concerns[0]}`;
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem("calmNowCurrentUser");
+            localStorage.removeItem("calmNowRememberedUser");
+            localStorage.removeItem("calmNowOnboardingComplete");
+            localStorage.removeItem("calmNowConcerns");
+            sessionStorage.removeItem("seenSplash");
+            window.location.href = "auth.html";
+        }
+    </script>
 </body>
 </html>
