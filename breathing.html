@@ -16,16 +16,18 @@
 
         <main class="content center-content">
             <section class="panel breathing-panel">
-                <div class="breathing-circle">
-                    <span>Breathe</span>
+                <div class="breathing-outer-ring">
+                    <div class="breathing-circle" id="breathingCircle">
+                        <span id="breathingText">Start</span>
+                    </div>
                 </div>
 
-                <h1 class="breathing-count">Breathe in: 4</h1>
-                <p class="instruction">Slowly breathe in through your nose</p>
+                <h1 class="breathing-count" id="phaseTitle">Ready to begin</h1>
+                <p class="instruction" id="phaseInstruction">Press Start to begin the breathing exercise.</p>
 
                 <div class="button-row">
-                    <button class="primary-btn">Start</button>
-                    <button class="secondary-btn">Reset</button>
+                    <button class="primary-btn half-btn" id="startBtn">Start</button>
+                    <button class="secondary-btn half-btn" id="resetBtn">Reset</button>
                 </div>
             </section>
         </main>
@@ -36,5 +38,7 @@
             <button class="nav-btn" onclick="window.location.href='emergency.html'">🚨<span>Emergency</span></button>
         </nav>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
